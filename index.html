@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vortex Manage</title>
+
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<!-- 🔐 LOGIN -->
+<div id="loginPage">
+    <h2>Connexion Admin</h2>
+    <input type="text" id="username" placeholder="Nom d'utilisateur">
+    <input type="password" id="password" placeholder="Mot de passe">
+    <button onclick="login()">Se connecter</button>
+</div>
+
+<!-- 🧠 APP -->
+<div id="app" style="display:none;">
+
+<header>
+    <h1>Vortex Manage</h1>
+    <p class="description">
+        Plateforme intelligente de gestion d’entreprise conçue pour centraliser,
+        optimiser et accélérer vos activités professionnelles.
+    </p>
+
+    <nav>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#employes">Employés</a>
+        <a href="#clients">Clients</a>
+        <a href="#projets">Projets</a>
+        <a href="#finances">Finances</a>
+    </nav>
+</header>
+
+<!-- 📊 Dashboard -->
+<section id="dashboard">
+    <h2>Dashboard</h2>
+
+    <p>Employés : <span id="totalEmployes">0</span></p>
+    <p>Clients : <span id="totalClients">0</span></p>
+    <p>Projets : <span id="totalProjets">0</span></p>
+    <p>Finances : <span id="totalFinances">0</span></p>
+
+    <canvas id="myChart"></canvas>
+</section>
+
+<!-- 👨‍💼 Employés -->
+<section id="employes">
+    <h2>Employés</h2>
+    <form id="formEmploye">
+        <input type="text" id="nomEmploye" placeholder="Nom employé" required>
+        <button>Ajouter</button>
+    </form>
+    <ul id="listeEmployes"></ul>
+</section>
+
+<!-- 👥 Clients -->
+<section id="clients">
+    <h2>Clients</h2>
+    <form id="formClient">
+        <input type="text" id="nomClient" placeholder="Nom client" required>
+        <button>Ajouter</button>
+    </form>
+    <ul id="listeClients"></ul>
+</section>
+
+<!-- 📁 Projets -->
+<section id="projets">
+    <h2>Projets</h2>
+    <form id="formProjet">
+        <input type="text" id="nomProjet" placeholder="Nom projet" required>
+        <button>Ajouter</button>
+    </form>
+    <ul id="listeProjets"></ul>
+</section>
+
+<!-- 💰 Finances -->
+<section id="finances">
+    <h2>Finances</h2>
+    <form id="formFinance">
+        <input type="number" id="montant" placeholder="Montant (+ ou -)" required>
+        <button>Ajouter</button>
+    </form>
+
+    <p>Total : <span id="totalFinanceDisplay">0</span></p>
+    <ul id="listeFinances"></ul>
+</section>
+
+<footer>
+    <p>&copy; 2026 Vortex Manage - Béni Kikwika</p>
+</footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
