@@ -5,16 +5,15 @@ body {
     margin: 0;
 }
 
-/* Header */
+/* HEADER */
 header {
     background: #000;
     padding: 20px;
     text-align: center;
 }
 
-.description {
-    font-size: 14px;
-    margin: 10px 0;
+h1 {
+    text-shadow: 0 0 10px #00ff00;
 }
 
 nav a {
@@ -23,17 +22,31 @@ nav a {
     text-decoration: none;
 }
 
-nav a:hover {
-    text-decoration: underline;
-}
-
-/* Sections */
+/* SECTIONS */
 section {
     padding: 20px;
-    border-bottom: 1px solid #00ff00;
+    margin: 15px;
+    border-radius: 10px;
+    background: #1a1a1a;
+    box-shadow: 0 0 10px #00ff00;
 }
 
-/* Formulaire */
+/* CARDS */
+.cards {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #000;
+    padding: 15px;
+    flex: 1;
+    text-align: center;
+    border: 1px solid #00ff00;
+}
+
+/* FORM */
 input {
     padding: 10px;
     margin: 5px;
@@ -53,13 +66,18 @@ button:hover {
     background: #00ff00;
 }
 
-/* Login */
+/* LIST */
+li {
+    margin: 5px 0;
+}
+
+/* LOGIN */
 #loginPage {
     text-align: center;
     padding: 100px;
 }
 
-/* Footer */
+/* FOOTER */
 footer {
     text-align: center;
     padding: 20px;
