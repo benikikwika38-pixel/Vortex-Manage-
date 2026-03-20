@@ -27,8 +27,7 @@
 <header>
     <h1>Vortex Manage</h1>
     <p class="description">
-        Plateforme intelligente de gestion d’entreprise conçue pour centraliser,
-        optimiser et accélérer vos activités professionnelles.
+        Plateforme intelligente de gestion d’entreprise
     </p>
 
     <nav>
@@ -40,19 +39,19 @@
     </nav>
 </header>
 
-<!-- 📊 Dashboard -->
 <section id="dashboard">
     <h2>Dashboard</h2>
 
-    <p>Employés : <span id="totalEmployes">0</span></p>
-    <p>Clients : <span id="totalClients">0</span></p>
-    <p>Projets : <span id="totalProjets">0</span></p>
-    <p>Finances : <span id="totalFinances">0</span></p>
+    <div class="cards">
+        <div class="card">Employés<br><span id="totalEmployes">0</span></div>
+        <div class="card">Clients<br><span id="totalClients">0</span></div>
+        <div class="card">Projets<br><span id="totalProjets">0</span></div>
+        <div class="card">Finances<br><span id="totalFinances">0</span></div>
+    </div>
 
     <canvas id="myChart"></canvas>
 </section>
 
-<!-- 👨‍💼 Employés -->
 <section id="employes">
     <h2>Employés</h2>
     <form id="formEmploye">
@@ -62,7 +61,6 @@
     <ul id="listeEmployes"></ul>
 </section>
 
-<!-- 👥 Clients -->
 <section id="clients">
     <h2>Clients</h2>
     <form id="formClient">
@@ -72,7 +70,6 @@
     <ul id="listeClients"></ul>
 </section>
 
-<!-- 📁 Projets -->
 <section id="projets">
     <h2>Projets</h2>
     <form id="formProjet">
@@ -82,11 +79,10 @@
     <ul id="listeProjets"></ul>
 </section>
 
-<!-- 💰 Finances -->
 <section id="finances">
     <h2>Finances</h2>
     <form id="formFinance">
-        <input type="number" id="montant" placeholder="Montant (+ ou -)" required>
+        <input type="number" id="montant" placeholder="Montant" required>
         <button>Ajouter</button>
     </form>
 
@@ -101,6 +97,5 @@
 </div>
 
 <script src="script.js"></script>
-
 </body>
-</html>
+                                         </html>
