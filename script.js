@@ -1,3 +1,5 @@
+let chart;
+
 // 🔐 LOGIN
 function login(){
     let user = document.getElementById("username").value;
@@ -7,6 +9,7 @@ function login(){
         document.getElementById("loginPage").style.display = "none";
         document.getElementById("app").style.display = "block";
         updateDashboard();
+        loadAllData(); // 🔥 charger les anciennes données
     } else {
         alert("Identifiants incorrects");
     }
@@ -41,7 +44,11 @@ function updateDashboard(){
 
 // 📊 GRAPH
 function drawChart(){
-    new Chart(document.getElementById("myChart"), {
+    if(chart){
+        chart.destroy();
+    }
+
+    chart = new Chart(document.getElementById("myChart"), {
         type: 'bar',
         data: {
             labels: ["Employés", "Clients", "Projets"],
@@ -53,57 +60,84 @@ function drawChart(){
     });
 }
 
-// 👨‍💼 EMPLOYES
+// ➕ CREATE ITEM
+function createItem(name, array, listId){
+    array.push(name);
+    saveData();
+
+    let li = document.createElement("li");
+    li.innerHTML = name + " <button onclick='deleteItem(this)'>❌</button>";
+
+    document.getElementById(listId).appendChild(li);
+    updateDashboard();
+}
+
+// ❌ DELETE ITEM
+function deleteItem(btn){
+    btn.parentElement.remove();
+}
+
+// 🔄 CHARGER LES DONNÉES AU DÉMARRAGE
+function loadAllData(){
+
+    // Employés
+    employes.forEach(nom => {
+        let li = document.createElement("li");
+        li.innerHTML = nom + " <button onclick='deleteItem(this)'>❌</button>";
+        document.getElementById("listeEmployes").appendChild(li);
+    });
+
+    // Clients
+    clients.forEach(nom => {
+        let li = document.createElement("li");
+        li.innerHTML = nom + " <button onclick='deleteItem(this)'>❌</button>";
+        document.getElementById("listeClients").appendChild(li);
+    });
+
+    // Projets
+    projets.forEach(nom => {
+        let li = document.createElement("li");
+        li.innerHTML = nom + " <button onclick='deleteItem(this)'>❌</button>";
+        document.getElementById("listeProjets").appendChild(li);
+    });
+
+    // Finances
+    finances.forEach(montant => {
+        let li = document.createElement("li");
+        li.innerHTML = montant + " <button onclick='deleteItem(this)'>❌</button>";
+        document.getElementById("listeFinances").appendChild(li);
+    });
+
+    updateDashboard();
+}
+
+// 📌 EVENTS
+
+// Employés
 document.getElementById("formEmploye").addEventListener("submit", function(e){
     e.preventDefault();
-    let nom = document.getElementById("nomEmploye").value;
-
-    employes.push(nom);
-    saveData();
-
-    let li = document.createElement("li");
-    li.textContent = nom;
-    document.getElementById("listeEmployes").appendChild(li);
-
+    createItem(document.getElementById("nomEmploye").value, employes, "listeEmployes");
     this.reset();
-    updateDashboard();
 });
 
-// 👥 CLIENTS
+// Clients
 document.getElementById("formClient").addEventListener("submit", function(e){
     e.preventDefault();
-    let nom = document.getElementById("nomClient").value;
-
-    clients.push(nom);
-    saveData();
-
-    let li = document.createElement("li");
-    li.textContent = nom;
-    document.getElementById("listeClients").appendChild(li);
-
+    createItem(document.getElementById("nomClient").value, clients, "listeClients");
     this.reset();
-    updateDashboard();
 });
 
-// 📁 PROJETS
+// Projets
 document.getElementById("formProjet").addEventListener("submit", function(e){
     e.preventDefault();
-    let nom = document.getElementById("nomProjet").value;
-
-    projets.push(nom);
-    saveData();
-
-    let li = document.createElement("li");
-    li.textContent = nom;
-    document.getElementById("listeProjets").appendChild(li);
-
+    createItem(document.getElementById("nomProjet").value, projets, "listeProjets");
     this.reset();
-    updateDashboard();
 });
 
-// 💰 FINANCES
+// Finances
 document.getElementById("formFinance").addEventListener("submit", function(e){
     e.preventDefault();
+
     let montant = Number(document.getElementById("montant").value);
 
     finances.push(montant);
@@ -112,7 +146,8 @@ document.getElementById("formFinance").addEventListener("submit", function(e){
     saveData();
 
     let li = document.createElement("li");
-    li.textContent = montant;
+    li.innerHTML = montant + " <button onclick='deleteItem(this)'>❌</button>";
+
     document.getElementById("listeFinances").appendChild(li);
 
     this.reset();
